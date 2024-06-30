@@ -19,6 +19,7 @@ xList = [item for item in range(1, 1300, 2)]
 # Create the color Finder object
 myColorFinder = ColorFinder(False)  # trying to find the color from the image
 prediction = False
+
 # per frame
 while True:
     # input image
@@ -43,18 +44,22 @@ while True:
         Y = [pos[1] for pos in positionList]
         A, B, C = np.polyfit(X, Y, 2)
 
-        for i, pos in enumerate(positionList):
-            # todo
-            cv2.circle(imgContours, pos, 8, (0, 255, 0), cv2.FILLED)
-            if i != 0:
-                # todo
-                cv2.line(imgContours, pos, positionList[i - 1], (0, 255, 0), 5)
+        # for i, pos in enumerate(positionList):
+        #     # todo
+        #     cv2.circle(imgContours, pos, 8, (0, 255, 0), cv2.FILLED)
+        #     if i != 0:
+        #         # todo
+        #         cv2.line(imgContours, pos, positionList[i - 1], (0, 255, 0), 5)
 
         for x in xList:
             y = int(A * x * x + B * x + C)
             cv2.circle(imgContours, (x, y), 2, (255, 0, 255), cv2.FILLED)
 
         if len(positionList) < 10:
+            for i, pos in enumerate(positionList):
+                cv2.circle(imgContours, pos, 8, (0, 255, 0), cv2.FILLED) #green
+                if i != 0:
+                    cv2.line(imgContours, pos, positionList[i - 1], (0, 255, 0), 5)
             # Prediction
             # x values 325 to 425 and y value 590 ax^2+bx+c = 0
             a = A
