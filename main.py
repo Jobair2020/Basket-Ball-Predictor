@@ -8,8 +8,22 @@ from cvzone.ColorModule import ColorFinder
 import math
 import numpy as np
 
+
+def find_contours(img, mask, minArea=500):
+    contours, hierarchy = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    contours = [cnt for cnt in contours if cv2.contourArea(cnt) > minArea]
+    contourDetails = []
+    for cnt in contours:
+        area = cv2.contourArea(cnt)
+        x, y, w, h = cv2.boundingRect(cnt)
+        center = (int(x + w / 2), int(y + h / 2))
+        contourDetails.append({'area': area, 'bbox': (x, y, w, h), 'center': center})
+    imgContours = cv2.drawContours(img.copy(), contours, -1, (0, 255, 0), 3)
+    return imgContours, contourDetails
+
+
 # Initialize the Video
-capture = cv2.VideoCapture('Videos/vid (1).mp4')
+capture = cv2.VideoCapture('Videos/vid (3).mp4')
 hsvVals = {'hmin': 0, 'smin': 115, 'vmin': 0, 'hmax': 15, 'smax': 255, 'vmax': 255}
 
 # Variables
@@ -19,6 +33,8 @@ xList = [item for item in range(1, 1300, 2)]
 # Create the color Finder object
 myColorFinder = ColorFinder(False)  # trying to find the color from the image
 prediction = False
+
+
 
 # per frame
 while True:
@@ -33,7 +49,8 @@ while True:
 
     # Find location of the ball
     # todo
-    imgContours, contours = cvzone.findContours(img, mask, minArea=500)
+    # imgContours, contours = cvzone.findContours(img, mask, minArea=500)
+    imgContours, contours = find_contours(img, mask, minArea=500)
 
     if contours:
         positionList.append(contours[0]['center'])
@@ -45,10 +62,10 @@ while True:
         A, B, C = np.polyfit(X, Y, 2)
 
         # for i, pos in enumerate(positionList):
-        #     # todo
+        #
         #     cv2.circle(imgContours, pos, 8, (0, 255, 0), cv2.FILLED)
         #     if i != 0:
-        #         # todo
+        #
         #         cv2.line(imgContours, pos, positionList[i - 1], (0, 255, 0), 5)
 
         for x in xList:

@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25f24491-9a9d-49d9-88fc-b32302af8891" name="Changes" comment="basket ball with library function added">
-      <change afterPath="$PROJECT_DIR$/basket_ball_raw_colorfinder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/basket_ball_raw_contour.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cropped.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/functionTest.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/functions_cropping.py" afterDir="false" />
+    <list default="true" id="25f24491-9a9d-49d9-88fc-b32302af8891" name="Changes" comment="color finder mannual function added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/basket_ball_raw_contour.py" beforeDir="false" afterPath="$PROJECT_DIR$/basket_ball_raw_contour.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functionTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/functionTest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions_cropping.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions_cropping.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -154,7 +152,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719552418304</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="color finder mannual function added">
+      <option name="closed" value="true" />
+      <created>1719754727852</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1719754727852</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -174,7 +180,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="basket ball with library function added" />
-    <option name="LAST_COMMIT_MESSAGE" value="basket ball with library function added" />
+    <MESSAGE value="color finder mannual function added" />
+    <option name="LAST_COMMIT_MESSAGE" value="color finder mannual function added" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Basket_Ball_Predictor$main.coverage" NAME="main Coverage Results" MODIFIED="1717323786648" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

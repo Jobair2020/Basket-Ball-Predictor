@@ -5,7 +5,7 @@ import math
 import numpy as np
 
 # Initialize the Video
-capture = cv2.VideoCapture('Videos/vid (1).mp4')
+capture = cv2.VideoCapture('Videos/vid (6).mp4')
 hsvVals = {'hmin': 0, 'smin': 115, 'vmin': 0, 'hmax': 15, 'smax': 255, 'vmax': 255}
 
 # Load the template image of the basket
