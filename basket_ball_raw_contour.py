@@ -1,3 +1,4 @@
+# not done for video 6
 import cv2
 import cvzone
 import numpy as np
@@ -127,6 +128,7 @@ while True:
             c = C - 590
             x = int((-b - math.sqrt(b * b - (4 * a * c))) / (2 * a))
             prediction = 330 < x < 415
+
 
         if prediction:
             cv2.putText(imgContours, "Basket", (50, 100), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 200, 0), 5)
