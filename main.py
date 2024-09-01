@@ -101,15 +101,17 @@ def crop_to_template_size(img, max_loc, template_w, template_h):
     return cropped_img
 
 
-# Main
+# Main code
 capture = cv2.VideoCapture('Videos/vid (4).mp4')
 hsvVals = {'hmin': 0, 'smin': 115, 'vmin': 0, 'hmax': 15, 'smax': 255, 'vmax': 255}
 
 template = cv2.imread('cropped.jpg', 0)  # Load in grayscale
 w, h = template.shape[::-1]
+# print(f"width:{w} and height:{h}")
+
 # Variables
 positionList = []
-xList = [item for item in range(1, 1300, 2)]
+xList = [item for item in range(1, w, 2)]
 
 # Create the color Finder object
 myColorFinder = ColorFinder(False)  # trying to find the color from the image
@@ -122,8 +124,8 @@ while True:
     # img = cv2.imread("Ball.png")
     # img = img[0:950, :]
 
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    res = cv2.matchTemplate(gray, template, cv2.TM_CCOEFF_NORMED)
+    gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    res = cv2.matchTemplate(gray_img, template, cv2.TM_CCOEFF_NORMED)
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
     img = crop_to_template_size(img, max_loc, w, h)
 
@@ -144,11 +146,12 @@ while True:
         Y = [pos[1] for pos in positionList]
         A, B, C = np.polyfit(X, Y, 2)
 
-
+        #for showing the regression line.
         for x in xList:
             y = int(A * x * x + B * x + C)
             cv2.circle(imgContours, (x, y), 2, (255, 0, 255), cv2.FILLED)
 
+        # will check only 9 center positions to predict the basket.
         if len(positionList) < 10:
             for i, pos in enumerate(positionList):
                 cv2.circle(imgContours, pos, 8, (0, 255, 0), cv2.FILLED) #green
