@@ -139,7 +139,7 @@ while True:
     imgColor, mask = find_color(img, hsvVals)
 
     # Find location of the ball
-    imgContours, contours = find_contours2(img, mask, minArea=500)
+    imgContours, contours = find_contours(img, mask, minArea=500)
 
     if contours:
         positionList.append(contours[0]['center'])

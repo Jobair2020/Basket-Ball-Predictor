@@ -54,7 +54,7 @@ def find_contours2(img, mask, minArea=500):
         x, y, w, h = cv2.boundingRect(cnt_array)
         center = (int(x + w / 2), int(y + h / 2))
         contourDetails.append({'area': area, 'bbox': (x, y, w, h), 'center': center})
-    # Draw contours from scratch
+    # Draw contours around ball
     contours_ = [np.array(contour) for contour in contours]
     imgContours = cv2.drawContours(img.copy(), contours_, -1, (0, 255, 0), 3)
     return imgContours, contourDetails
@@ -64,10 +64,10 @@ def find_color(img, hsvVals):
     lower = np.array([hsvVals['hmin'], hsvVals['smin'], hsvVals['vmin']])
     upper = np.array([hsvVals['hmax'], hsvVals['smax'], hsvVals['vmax']])
 
-    mask = np.all(hsv >= lower, axis=2) & np.all(hsv <= upper, axis=2)
-    mask = (mask * 255).astype(np.uint8)
-
     # mask = cv2.inRange(hsv, lower, upper)
+    mask = np.all(hsv >= lower, axis=2) & np.all(hsv <= upper, axis=2)
+    mask = (mask * 255).astype(np.uint8) # normalize
+
     imgColor = cv2.bitwise_and(img, img, mask=mask)
     return imgColor, mask
 
@@ -102,7 +102,7 @@ def crop_to_template_size(img, max_loc, template_w, template_h):
 
 
 # Main code
-capture = cv2.VideoCapture('Videos/vid (4).mp4')
+capture = cv2.VideoCapture('Videos/vid (1).mp4')
 hsvVals = {'hmin': 0, 'smin': 115, 'vmin': 0, 'hmax': 15, 'smax': 255, 'vmax': 255}
 
 template = cv2.imread('cropped.jpg', 0)  # Load in grayscale
